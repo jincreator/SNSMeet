@@ -18,8 +18,6 @@ public class snsmeet extends Activity implements OnClickListener
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.snsmeet);
         //Button aboutbutton=(Button)findViewById(R.id.about_button);
-        View aboutbutton=findViewById(R.id.about_button);
-        aboutbutton.setOnClickListener(this);
         View nfcbutton=findViewById(R.id.nfc_connect);
         nfcbutton.setOnClickListener(this);
         View qrcodebutton=findViewById(R.id.qrcode_connect);
@@ -30,10 +28,6 @@ public class snsmeet extends Activity implements OnClickListener
     	Intent i;
         switch(v.getId())
         {
-            case R.id.about_button:
-                i=new Intent(this,about.class);
-                startActivity(i);
-                break;
             case R.id.nfc_connect:
             	i=new Intent(this,nfc.class);
             	startActivity(i);
@@ -60,11 +54,11 @@ public class snsmeet extends Activity implements OnClickListener
     	case R.id.account:
     		startActivity(new Intent(this,account.class));
     		return true;
+    	case R.id.list:
+    		startActivity(new Intent(this,list.class));
+    		return true;
     	case R.id.setting:
     		startActivity(new Intent(this,setting.class));
-    		return true;
-    	case R.id.info:
-    		startActivity(new Intent(this,info.class));
     		return true;
     	}
     	return false;

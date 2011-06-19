@@ -16,12 +16,19 @@
         <activity android:name=".about"
                   android:label="@string/about_title"
                   android:theme="@android:style/Theme.Dialog">
+                  <intent-filter>
+                      <action android:name="org.snsmeet.about" />
+                      <category android:name="android.intent.category.DEFAULT" />
+                  </intent-filter>
         </activity>
         <activity android:name=".account"
                   android:label="@string/account">
         </activity>
         <activity android:name=".setting"
                   android.label="@string/setting">
+        </activity>
+        <activity android:name=".list"
+                  android:label="@string/list">
         </activity>
         <activity android:name=".nfc"
                   android.label="@string/nfc">
