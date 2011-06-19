@@ -14,7 +14,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".about"
-                  android:label="@string/about_title"
+                  android:label="@string/about"
                   android:theme="@android:style/Theme.Dialog">
                   <intent-filter>
                       <action android:name="org.snsmeet.about" />

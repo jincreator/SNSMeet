@@ -6,7 +6,7 @@
                         android:summary="setting it"
                         android:defaultValue="true"
     />
-    <Preference android:title="test">
+    <Preference android:title="@string/about">
         <intent android:action="org.snsmeet.about"/>
     </Preference>
 </PreferenceScreen>

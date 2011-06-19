@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">SNSMeet</string><string name="nfc">Connect with NFC</string>
     <string name="qrcode">Connect with QRcode</string>
-    <string name="about">SNSMeet help people connect to SNS when they meet at offline.</string>
-    <string name="about_title">About SNSMeet</string>
+    <string name="about_text">SNSMeet help people connect to SNS when they meet at offline.</string>
+    <string name="about">About SNSMeet</string>
     <string name="account">Account</string>
     <string name="setting">Settings</string>
     <string name="list">List</string>

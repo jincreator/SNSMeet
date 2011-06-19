@@ -3,8 +3,8 @@
     <string name="app_name">SNSMeet</string><string name="nfc">NFC로 연결</string>
     
     <string name="qrcode">QR코드로 연결</string>
-    <string name="about">SNSMeet는 오프라인에서 만난 사람들끼리 즉석에서 SNS와 연결할 수 있도록 도와줍니다.</string>
-    <string name="about_title">SNSMeet에 대하여</string>
+    <string name="about_text">SNSMeet는 오프라인에서 만난 사람들끼리 즉석에서 SNS와 연결할 수 있도록 도와줍니다.</string>
+    <string name="about">SNSMeet에 대하여</string>
     <string name="account">계정</string><string name="setting">설정</string>
     
     <string name="list">리스트</string>
