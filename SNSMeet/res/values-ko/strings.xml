@@ -9,4 +9,5 @@
     
     <string name="list">리스트</string>
     <string name="info">정보</string>
+    <string name="account_empty">등록되지 않음</string>
 </resources>

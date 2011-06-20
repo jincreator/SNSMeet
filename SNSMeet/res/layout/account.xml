@@ -8,12 +8,10 @@
         android:layout_height="fill_parent"
         >
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-        >
+            android:layout_height="wrap_content" android:orientation="horizontal">
             <ToggleButton android:drawableTop="@drawable/twitter_newbird_blue_100px" android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/toggleButton1"></ToggleButton>
-            <TextView android:text="TextView" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <TextView android:text="TextView" android:id="@+id/twitter_account" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -21,7 +19,7 @@
             android:layout_height="wrap_content"
         >
             <ToggleButton android:drawableTop="@drawable/f_logo_100px" android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/toggleButton2"></ToggleButton>
-            <TextView android:text="TextView" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            <TextView android:text="TextView" android:id="@+id/facebook_account" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -8,5 +8,6 @@
     <string name="setting">Settings</string>
     <string name="list">List</string>
     <string name="info">Information</string>
+    <string name="account_empty">Not registered</string>
     
 </resources>
