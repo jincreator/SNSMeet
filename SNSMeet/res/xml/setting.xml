@@ -7,6 +7,6 @@
                         android:defaultValue="true"
     />
     <Preference android:title="@string/about">
-        <intent android:action="org.snsmeet.about"/>
+        <intent android:action="org.snsmeet.About"/>
     </Preference>
 </PreferenceScreen>
