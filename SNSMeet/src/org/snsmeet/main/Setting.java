@@ -1,4 +1,7 @@
-package org.snsmeet;
+package org.snsmeet.main;
+
+import org.snsmeet.R;
+import org.snsmeet.R.xml;
 
 import android.preference.PreferenceActivity;
 import android.os.Bundle;

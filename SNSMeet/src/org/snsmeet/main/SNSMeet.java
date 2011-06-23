@@ -1,4 +1,9 @@
-package org.snsmeet;
+package org.snsmeet.main;
+
+import org.snsmeet.R;
+import org.snsmeet.R.id;
+import org.snsmeet.R.layout;
+import org.snsmeet.R.menu;
 
 import android.app.Activity;
 import android.os.Bundle;
