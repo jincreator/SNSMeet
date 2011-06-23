@@ -16,13 +16,15 @@ public class QRcode extends Activity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-    if (requestCode == 0) {
-    if (resultCode == RESULT_OK) {
-    String format = intent.getStringExtra("SCAN_RESULT_FORMAT"); //형식
-    String contents = intent.getStringExtra("SCAN_RESULT"); //URL
-    } else if (resultCode == RESULT_CANCELED) {
-    ;
-    }
-    }
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT"); //형식
+                String contents = intent.getStringExtra("SCAN_RESULT"); //URL
+            }
+            else if(resultCode == RESULT_CANCELED)
+            {
+                ;
+            }
+        }
     }
 }
