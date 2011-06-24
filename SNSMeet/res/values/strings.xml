@@ -12,6 +12,8 @@
     <string name="account_add">Add SNS account</string>
     <string name="twitter">Twitter</string>
     <string name="facebook">Facebook</string>
+    <string name="show_first">Show First</string>
+    <string name="scan_first">Scan First</string>
     <string name="app_picker_name">Applications</string>
     <string name="bookmark_picker_name">Bookmarks</string>
     <string name="button_add_calendar">Add to calendar</string>

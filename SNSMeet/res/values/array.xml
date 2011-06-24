@@ -4,4 +4,8 @@
 		<item>@string/twitter</item>
 		<item>@string/facebook</item>
 	</array>
+	<array name="qrcode_order">
+		<item>@string/show_first</item>
+		<item>@string/scan_first</item>
+	</array>
 </resources>

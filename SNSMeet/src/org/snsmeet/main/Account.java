@@ -27,7 +27,7 @@ public class Account extends Activity implements OnClickListener{
 			final Intent twitter=new Intent(this,Twitter_Add.class);
 			AlertDialog.Builder b=new AlertDialog.Builder(this);
 			b.setTitle(R.string.account_add);
-			b.setItems(R.array.sns_type,new DialogInterface.OnClickListener() {				
+			b.setItems(R.array.sns_type,new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int sns_type){
 					switch(sns_type){
 					case 0:
