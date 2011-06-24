@@ -9,6 +9,9 @@
     <string name="list">리스트</string>
     <string name="info">정보</string>
     <string name="account_empty">등록되지 않음</string>
+    <string name="account_add">SNS 계정 추가</string>
+    <string name="twitter">트위터</string>
+    <string name="facebook">페이스북</string>
     <string name="app_picker_name">어플리케이션</string>
     <string name="bookmark_picker_name">즐겨찾기</string>
     <string name="button_add_calendar">일정에 추가하기</string>

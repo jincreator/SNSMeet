@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<array name="sns_type">
+		<item>@string/twitter</item>
+		<item>@string/facebook</item>
+	</array>
+</resources>

@@ -9,6 +9,9 @@
     <string name="list">List</string>
     <string name="info">Information</string>
     <string name="account_empty">Not registered</string>
+    <string name="account_add">Add SNS account</string>
+    <string name="twitter">Twitter</string>
+    <string name="facebook">Facebook</string>
     <string name="app_picker_name">Applications</string>
     <string name="bookmark_picker_name">Bookmarks</string>
     <string name="button_add_calendar">Add to calendar</string>
@@ -131,5 +134,7 @@
     <string name="wifi_connect_failed">Network connection failed</string>
     <string name="wifi_ssid_label">Network Name</string>
     <string name="wifi_type_label">Type</string>
-    <string name="zxing_url">http://code.google.com/p/zxing</string>    
+    <string name="zxing_url">http://code.google.com/p/zxing</string>
+    
+        
 </resources>
