@@ -14,6 +14,11 @@
     <string name="facebook">페이스북</string>
     <string name="show_first">보여주기 먼저</string>
     <string name="scan_first">받아보기 먼저</string>
+    <string name="license">저작권</string>
+    <string name="about_summary">오프라인에서 만난 사람들을 이어주는 SNSMeet입니다.</string>
+    <string name="license_summary">SNSMeet는 오픈 소스 프로그램으로 LGPL-3 라이선스를 사용합니다.</string>
+    <string name="legal_notice">법적 고지</string>
+    <string name="legal_notice_summary">SNSMeet와 관련된 법적 내용입니다.</string>
     <string name="app_picker_name">어플리케이션</string>
     <string name="bookmark_picker_name">즐겨찾기</string>
     <string name="button_add_calendar">일정에 추가하기</string>

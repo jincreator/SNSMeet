@@ -6,7 +6,16 @@
                         android:summary="setting it"
                         android:defaultValue="true"
     />
-    <Preference android:title="@string/about">
+    <Preference android:title="@string/about"
+                android:summary="@string/about_summary">
         <intent android:action="org.snsmeet.About"/>
+    </Preference>
+    <Preference android:title="@string/license"
+                android:summary="@string/license_summary">
+        <intent android:action="org.snsmeet.license"/>
+    </Preference>
+    <Preference android:title="@string/legal_notice"
+                android:summary="@string/legal_notice_summary">
+        <intent android:action="org.snsmeet.LegalNotice"/>
     </Preference>
 </PreferenceScreen>

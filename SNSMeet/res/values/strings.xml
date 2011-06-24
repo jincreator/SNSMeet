@@ -14,6 +14,11 @@
     <string name="facebook">Facebook</string>
     <string name="show_first">Show First</string>
     <string name="scan_first">Scan First</string>
+    <string name="license">License</string>
+    <string name="about_summary">SNSMeet connect people meet at offline</string>
+    <string name="license_summary">SNSMeet is open-source program under LGPL-3</string>
+    <string name="legal_notice">Legal Notice</string>
+    <string name="legal_notice_summary">Legal Information with SNSMeet</string>
     <string name="app_picker_name">Applications</string>
     <string name="bookmark_picker_name">Bookmarks</string>
     <string name="button_add_calendar">Add to calendar</string>

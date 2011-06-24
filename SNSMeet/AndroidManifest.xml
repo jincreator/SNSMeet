@@ -44,6 +44,22 @@
         <activity android:name=".main.QRcode"
                   android:label="@string/qrcode">
         </activity>
+        <activity android:name=".main.License"
+                  android:label="@string/license"
+                  android:theme="@android:style/Theme.Dialog">
+                  <intent-filter>
+                      <action android:name="org.snsmeet.license" />
+                      <category android:name="android.intent.category.DEFAULT"/>
+                  </intent-filter>
+        </activity>
+        <activity android:name=".main.LegalNotice"
+                  android:label="@string/legal_notice"
+                  android:theme="@android:style/Theme.Dialog">
+                  <intent-filter>
+                      <action android:name="org.snsmeet.LegalNotice" />
+                      <category android:name="android.intent.category.DEFAULT"/>
+                  </intent-filter>
+        </activity>
         <activity android:name=".client.android.CaptureActivity"
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|keyboardHidden"
