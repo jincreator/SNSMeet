@@ -16,20 +16,19 @@ import android.widget.SimpleCursorAdapter;
 
 public class Account extends Activity implements OnClickListener{
     /** Called when the activity is first created. */
-	AccountDB accountdb;
+	private AccountDB accountdb;
+	private SQLiteDatabase db;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         accountdb=new AccountDB(this);
-        SQLiteDatabase db=accountdb.getWritableDatabase();
+        db=accountdb.getWritableDatabase();
         Cursor c=db.rawQuery("SELECT * FROM twitter",null);
         startManagingCursor(c);
         setContentView(R.layout.account);
         SimpleCursorAdapter a=new SimpleCursorAdapter(this,R.layout.account_list,c,new String[]{"nick","token"},new int[]{R.id.account_nick,R.id.account_token});
         ListView l=(ListView)findViewById(R.id.account_listview);
         l.setAdapter(a);
-        TextView twitter_account=(TextView)findViewById(R.id.twitter_account);
-        twitter_account.setText(R.string.account_empty);
         View account_add=findViewById(R.id.account_add);
         account_add.setOnClickListener(this);
     }
@@ -44,6 +43,7 @@ public class Account extends Activity implements OnClickListener{
 					switch(sns_type){
 					case 0:
 						startActivity(twitter);
+						db.execSQL("INSERT INTO twitter VALUES (null,'abcd','efgh',1);");
 						break;
 					}
 				}

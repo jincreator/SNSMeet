@@ -14,28 +14,5 @@
         <TextView android:text="@string/account_add" android:id="@+id/account_add_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical"></TextView>
     </LinearLayout>
     <ListView android:id="@+id/account_listview" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            >
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:orientation="horizontal">
-                <ToggleButton android:drawableTop="@drawable/twitter_newbird_blue_100px" android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/toggleButton1"></ToggleButton>
-                <TextView android:text="TextView" android:id="@+id/twitter_account" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-            >
-                <ToggleButton android:drawableTop="@drawable/f_logo_100px" android:text="ToggleButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/toggleButton2"></ToggleButton>
-                <TextView android:text="TextView" android:id="@+id/facebook_account" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

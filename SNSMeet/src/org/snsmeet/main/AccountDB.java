@@ -11,8 +11,8 @@ public class AccountDB extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db){
-    	db.execSQL("CREATE TABLE twitter(_id  INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT, token TEXT);");
-    	db.execSQL("CREATE TABLE facebook(_id  INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT, token TEXT);");
+    	db.execSQL("CREATE TABLE twitter(_id  INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT, token TEXT, use INTEGER);");
+    	db.execSQL("CREATE TABLE facebook(_id  INTEGER PRIMARY KEY AUTOINCREMENT, nick TEXT, token TEXT, use INTEGER);");
     }
     @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion){
