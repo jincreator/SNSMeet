@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/account" android:title="@string/account" android:icon="@android:drawable/ic_menu_agenda"></item>
-    <item android:id="@+id/list" android:title="@string/list" android:icon="@android:drawable/ic_menu_share"></item>
+    <item android:id="@+id/list" android:title="@string/list" android:icon="@android:drawable/ic_menu_upload"></item>
     <item android:id="@+id/setting" android:title="@string/setting" android:icon="@android:drawable/ic_menu_preferences"></item>
 </menu>

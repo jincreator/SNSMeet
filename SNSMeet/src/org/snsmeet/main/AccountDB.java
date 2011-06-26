@@ -20,10 +20,10 @@ public class AccountDB extends SQLiteOpenHelper {
     	db.execSQL("DROP TABLE IF EXISTS facebook");
     	onCreate(db);
     }
-    public void insert_twitter(SQLiteDatabase db,String nick, String key){
-    	db.execSQL("INSERT INTO twitter VALUES (null,'"+nick+"','"+key+"');");
+    public void insert_twitter(SQLiteDatabase db,String nick, String token, String token_secret){
+    	db.execSQL("INSERT INTO twitter VALUES (null,'"+nick+"','"+token+"','"+token_secret+"','"+"1');");
     }
-    public void insert_facebook(SQLiteDatabase db,String nick, String key){
-    	db.execSQL("INSERT INTO facebook VALUES (null,'"+nick+"','"+key+"');");
+    public void insert_facebook(SQLiteDatabase db,String nick, String token, String token_secret){
+    	db.execSQL("INSERT INTO facebook VALUES (null,'"+nick+"','"+token+"','"+token_secret+"','"+"1');");
     }
 }

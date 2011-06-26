@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <ToggleButton android:text="ToggleButton" android:layout_height="wrap_content" android:id="@+id/account_toggle"  android:layout_width="wrap_content"></ToggleButton>
-    <TextView android:id="@+id/account_nick" android:layout_height="wrap_content" android:text="TextView" android:layout_width="wrap_content"></TextView>
-    <TextView android:id="@+id/account_token" android:layout_height="wrap_content" android:text="TextView" android:layout_width="wrap_content"></TextView>
-</LinearLayout>
+    <ToggleButton android:text="ToggleButton" android:layout_height="wrap_content" android:id="@+id/account_toggle"  android:layout_width="wrap_content" android:layout_alignParentLeft="true"></ToggleButton>
+    <TextView android:id="@+id/account_nick" android:layout_height="wrap_content" android:text="TextView" android:layout_width="wrap_content" android:layout_centerHorizontal="true"></TextView>
+    <ImageView android:layout_width="wrap_content" android:src="@android:drawable/ic_menu_close_clear_cancel" android:id="@+id/account_delete" android:layout_height="wrap_content" android:layout_alignParentRight="true"></ImageView>
+</RelativeLayout>

@@ -4,15 +4,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:id="@+id/account_add"
-        android:clickable="true" android:layout_height="75dip">
-        
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/account_add_image" android:src="@android:drawable/ic_menu_add" android:layout_gravity="center_vertical"></ImageView>
-        <TextView android:text="@string/account_add" android:id="@+id/account_add_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical"></TextView>
-    </LinearLayout>
-    <ListView android:id="@+id/account_listview" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
-
+    <TabHost android:id="@+id/tabhost" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout1" android:layout_height="match_parent" android:orientation="vertical">
+            <TabWidget android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@android:id/tabs"></TabWidget>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent" android:id="@android:id/tabcontent">
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/twitter_frame" android:layout_height="match_parent" android:orientation="vertical">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:id="@+id/account_add_twitter" android:clickable="true" android:layout_height="75dip">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/account_add_image_twitter" android:src="@android:drawable/ic_menu_add" android:layout_gravity="center_vertical"></ImageView>
+                        <TextView android:text="@string/account_add" android:id="@+id/account_add_text_twitter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical"></TextView>
+                     </LinearLayout>
+                    <ListView android:id="@+id/twitter_listview" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:id="@+id/facebook_frame" android:layout_height="match_parent" android:orientation="vertical">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:id="@+id/account_add_facebook" android:clickable="true" android:layout_height="75dip">
+                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/account_add_image_facebook" android:src="@android:drawable/ic_menu_add" android:layout_gravity="center_vertical"></ImageView>
+                        <TextView android:text="@string/account_add" android:id="@+id/account_add_text_facebook" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical"></TextView>
+                     </LinearLayout>
+                    <ListView android:id="@+id/facebook_listview" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
 </LinearLayout>
