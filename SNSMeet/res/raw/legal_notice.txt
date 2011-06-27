@@ -6,6 +6,9 @@ SNSMeet is distributed WITHOUT ANY WARRANTY.
 
 SNSMeet is built using ZXing. ZXing (pronounced "zebra crossing") is an open-source, multi-format 1D/2D barcode image processing library implemented in Java. ZXing is licensed under the Apache License v2.0.
 
+Twittetr4J is a Twitter API binding library for the Java language licensed under Apache License 2.0.
+Twitter4J includes software from JSON.org to parse JSON response from the Twitter API. You can see the license term at http://www.JSON.org/license.html
+
 QR code is trademarked by Denso Wave, inc.
 
                                  Apache License
