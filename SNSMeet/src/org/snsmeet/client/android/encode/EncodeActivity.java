@@ -30,8 +30,11 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,7 +51,7 @@ import org.snsmeet.client.android.Intents;
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-public final class EncodeActivity extends Activity {
+public final class EncodeActivity extends Activity implements OnClickListener {
 
   private static final String TAG = EncodeActivity.class.getSimpleName();
 
@@ -71,67 +74,67 @@ public final class EncodeActivity extends Activity {
     finish();
   }
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    super.onCreateOptionsMenu(menu);
-    menu.add(0, Menu.FIRST, 0, R.string.menu_share).setIcon(android.R.drawable.ic_menu_share);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    if (qrCodeEncoder == null) { // Odd
-      Log.w(TAG, "No existing barcode to send?");
-      return true;
-    }
-
-    String contents = qrCodeEncoder.getContents();
-    Bitmap bitmap;
-    try {
-      bitmap = qrCodeEncoder.encodeAsBitmap();
-    } catch (WriterException we) {
-      Log.w(TAG, we);
-      return true;
-    }
-
-    File bsRoot = new File(Environment.getExternalStorageDirectory(), "BarcodeScanner");
-    File barcodesRoot = new File(bsRoot, "Barcodes");
-    if (!barcodesRoot.exists() && !barcodesRoot.mkdirs()) {
-      Log.w(TAG, "Couldn't make dir " + barcodesRoot);
-      showErrorMessage(R.string.msg_unmount_usb);
-      return true;
-    }
-    File barcodeFile = new File(barcodesRoot, makeBarcodeFileName(contents) + ".png");
-    barcodeFile.delete();
-    FileOutputStream fos = null;
-    try {
-      fos = new FileOutputStream(barcodeFile);
-      bitmap.compress(Bitmap.CompressFormat.PNG, 0, fos);
-    } catch (FileNotFoundException fnfe) {
-      Log.w(TAG, "Couldn't access file " + barcodeFile + " due to " + fnfe);
-      showErrorMessage(R.string.msg_unmount_usb);
-      return true;
-    } finally {
-      if (fos != null) {
-        try {
-          fos.close();
-        } catch (IOException ioe) {
-          // do nothing
-        }
-      }
-    }
-
-    Intent intent = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
-    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name) + " - " +
-        qrCodeEncoder.getTitle());
-    intent.putExtra(Intent.EXTRA_TEXT, qrCodeEncoder.getContents());
-    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + barcodeFile.getAbsolutePath()));
-    intent.setType("image/png");
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-    startActivity(Intent.createChooser(intent, null));
-    return true;
-  }
-
+//  @Override
+//  public boolean onCreateOptionsMenu(Menu menu) {
+//    super.onCreateOptionsMenu(menu);
+//    menu.add(0, Menu.FIRST, 0, R.string.menu_share).setIcon(android.R.drawable.ic_menu_share);
+//    return true;
+//  }
+//
+//  @Override
+//  public boolean onOptionsItemSelected(MenuItem item) {
+//    if (qrCodeEncoder == null) { Odd
+//      Log.w(TAG, "No existing barcode to send?");
+//      return true;
+//    }
+//
+//    String contents = qrCodeEncoder.getContents();
+//    Bitmap bitmap;
+//    try {
+//      bitmap = qrCodeEncoder.encodeAsBitmap();
+//    } catch (WriterException we) {
+//      Log.w(TAG, we);
+//      return true;
+//    }
+//
+//    File bsRoot = new File(Environment.getExternalStorageDirectory(), "BarcodeScanner");
+//    File barcodesRoot = new File(bsRoot, "Barcodes");
+//    if (!barcodesRoot.exists() && !barcodesRoot.mkdirs()) {
+//      Log.w(TAG, "Couldn't make dir " + barcodesRoot);
+//      showErrorMessage(R.string.msg_unmount_usb);
+//      return true;
+//    }
+//    File barcodeFile = new File(barcodesRoot, makeBarcodeFileName(contents) + ".png");
+//    barcodeFile.delete();
+//    FileOutputStream fos = null;
+//    try {
+//      fos = new FileOutputStream(barcodeFile);
+//      bitmap.compress(Bitmap.CompressFormat.PNG, 0, fos);
+//    } catch (FileNotFoundException fnfe) {
+//      Log.w(TAG, "Couldn't access file " + barcodeFile + " due to " + fnfe);
+//      showErrorMessage(R.string.msg_unmount_usb);
+//      return true;
+//    } finally {
+//      if (fos != null) {
+//        try {
+//          fos.close();
+//        } catch (IOException ioe) {
+//          // do nothing
+//        }
+//      }
+//    }
+//
+//    Intent intent = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
+//    intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name) + " - " +
+//        qrCodeEncoder.getTitle());
+//    intent.putExtra(Intent.EXTRA_TEXT, qrCodeEncoder.getContents());
+//    intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + barcodeFile.getAbsolutePath()));
+//    intent.setType("image/png");
+//    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//    startActivity(Intent.createChooser(intent, null));
+//    return true;
+//  }
+//
   private static CharSequence makeBarcodeFileName(CharSequence contents) {
     int fileNameLength = Math.min(MAX_BARCODE_FILENAME_LENGTH, contents.length());
     StringBuilder fileName = new StringBuilder(fileNameLength);
@@ -160,12 +163,15 @@ public final class EncodeActivity extends Activity {
     Intent intent = getIntent();
     try {
       qrCodeEncoder = new QRCodeEncoder(this, intent, smallerDimension);
-      setTitle(getString(R.string.app_name) + " - " + qrCodeEncoder.getTitle());
+      setTitle(getString(R.string.app_name));
       Bitmap bitmap = qrCodeEncoder.encodeAsBitmap();
       ImageView view = (ImageView) findViewById(R.id.image_view);
       view.setImageBitmap(bitmap);
       TextView contents = (TextView) findViewById(R.id.contents_text_view);
       contents.setText(qrCodeEncoder.getDisplayContents());
+      Button next=(Button)findViewById(R.id.button_next);
+      next.setOnClickListener(this);
+      
     } catch (WriterException e) {
       Log.e(TAG, "Could not encode barcode", e);
       showErrorMessage(R.string.msg_encode_contents_failed);
@@ -175,6 +181,12 @@ public final class EncodeActivity extends Activity {
       showErrorMessage(R.string.msg_encode_contents_failed);
       qrCodeEncoder = null;
     }
+  }
+  public void onClick(View v){
+	  switch(v.getId()){
+	  case R.id.button_next:
+		  finish();
+	  }
   }
 
   private void showErrorMessage(int message) {

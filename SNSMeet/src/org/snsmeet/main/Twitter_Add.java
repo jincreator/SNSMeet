@@ -13,8 +13,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.database.sqlite.SQLiteDatabase;
 
 public class Twitter_Add extends Activity{
+	private AccountDB accountdb;
+	private SQLiteDatabase db;
 	public static String consumerKey = "9rLaK4l7RBn2x4YMgRVkw";
 	public static String consumerSecret = "sbkoZ5Q5kCngvPh65e1HM7eQoGLdW5FfudfwkcOPy5Q";
 	public static Uri CALLBACK_URL = Uri.parse("http://snsmeet.sourceforge.net/");
@@ -52,6 +55,7 @@ public class Twitter_Add extends Activity{
 			String oauth_verifier = uri.getQueryParameter("oauth_verifier");
 			try {
 			             acToken = twitter.getOAuthAccessToken(rqToken, oauth_verifier);
+			             accountdb.insert_twitter(db,"nick",acToken.getToken(), acToken.getTokenSecret());
 			} catch (TwitterException e) {
 			             e.printStackTrace();
 			}

@@ -10,9 +10,13 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 public class QRcode extends Activity {
     /** Called when the activity is first created. */
+	private AccountDB accountdb=new AccountDB(this);
+	private SQLiteDatabase db;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +58,18 @@ public class QRcode extends Activity {
 		startActivityForResult(i,0);
 	}
 	void show(){
+		db=accountdb.getWritableDatabase();
+		Cursor account=db.rawQuery("SELECT * FROM twitter WHERE use=1", null);
+		account.moveToFirst();
 	    Intent i = new Intent(Intents.Encode.ACTION);
 	    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 	    i.putExtra(Intents.Encode.TYPE, Contents.Type.TEXT);
-	    i.putExtra(Intents.Encode.DATA, "text");
 	    i.putExtra(Intents.Encode.FORMAT, BarcodeFormat.QR_CODE.toString());
+	    i.putExtra(Intents.Encode.DATA, "http://twitter.com/"+account.getString(account.getColumnIndex("nick")));
 	    startActivity(i);
+	    while(account.moveToNext()){
+	    	i.putExtra(Intents.Encode.DATA, "http://twitter.com/"+account.getString(account.getColumnIndex("nick")));
+		    startActivity(i);
+	    }
 	}
 }
