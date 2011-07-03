@@ -56,8 +56,8 @@ public class Twitter_Add extends Activity{
 		Uri uri = intent.getData();
 		
 
-		accountdb=new AccountDB(this);
-		db=accountdb.getWritableDatabase();
+		//accountdb=new AccountDB(this);
+		//db=accountdb.getWritableDatabase();
 		
 		if(uri != null && CALLBACK_URL.getScheme().equals(uri.getScheme())){
 			String oauth_verifier = uri.getQueryParameter("oauth_verifier");

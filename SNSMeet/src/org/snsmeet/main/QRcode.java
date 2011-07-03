@@ -4,22 +4,20 @@ import org.snsmeet.BarcodeFormat;
 import org.snsmeet.R;
 import org.snsmeet.client.android.Contents;
 import org.snsmeet.client.android.Intents;
-import org.snsmeet.client.android.share.ShareActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 
 public class QRcode extends Activity {
-    /** Called when the activity is first created. */
-	private AccountDB accountdb=new AccountDB(this);
-	private SQLiteDatabase db;
+	/** Called when the activity is first created. */
+	private AccountDB accountdb;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        accountdb=new AccountDB(this);
         AlertDialog.Builder b=new AlertDialog.Builder(this);
 		b.setTitle(R.string.account_add);
 		b.setItems(R.array.qrcode_order,new DialogInterface.OnClickListener() {
@@ -58,8 +56,7 @@ public class QRcode extends Activity {
 		startActivityForResult(i,0);
 	}
 	void show(){
-		db=accountdb.getWritableDatabase();
-		Cursor account=db.rawQuery("SELECT * FROM twitter WHERE use=1", null);
+		Cursor account=accountdb.cursor_using_twitter();
 		account.moveToFirst();
 	    Intent i = new Intent(Intents.Encode.ACTION);
 	    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);

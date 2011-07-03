@@ -19,6 +19,7 @@
     <string name="license_summary">SNSMeet는 오픈 소스 프로그램으로 LGPL-3 라이선스를 사용합니다.</string>
     <string name="legal_notice">법적 고지</string>
     <string name="legal_notice_summary">SNSMeet와 관련된 법적 내용입니다.</string>
+    <string name="next">다음</string>
     <string name="app_picker_name">어플리케이션</string>
     <string name="bookmark_picker_name">즐겨찾기</string>
     <string name="button_add_calendar">일정에 추가하기</string>

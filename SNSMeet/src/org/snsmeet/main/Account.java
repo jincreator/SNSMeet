@@ -29,17 +29,15 @@ import org.snsmeet.main.AccountDB;
 public class Account extends Activity implements OnClickListener{
     /** Called when the activity is first created. */
 	private AccountDB accountdb;
-	private SQLiteDatabase db;
 	private Cursor cursor_twitter;
 	private Cursor cursor_facebook;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         accountdb=new AccountDB(this);
-        db=accountdb.getWritableDatabase();
-        cursor_twitter=db.rawQuery("SELECT * FROM twitter",null);
+        cursor_twitter=accountdb.cursor_twitter();
         startManagingCursor(cursor_twitter);
-        cursor_facebook=db.rawQuery("SELECT * FROM facebook",null);
+        cursor_facebook=accountdb.cursor_facebook();
         startManagingCursor(cursor_facebook);
         setContentView(R.layout.account);
         TabHost tabhost=(TabHost)findViewById(R.id.tabhost);
@@ -89,14 +87,20 @@ public class Account extends Activity implements OnClickListener{
         	use.setChecked(cur.getLong(cur.getColumnIndex("use"))==1);
         	use.setOnClickListener(new OnClickListener(){
         		public void onClick(View v){
-        			db.execSQL("UPDATE "+service+" SET use="+(int)(use.isChecked()?1:0)+" WHERE _id="+cs+";");
+        			if(service=="twitter")
+        				accountdb.use_twitter(use.isChecked(), cs);
+        			if(service=="facebook")
+        				accountdb.use_facebook(use.isChecked(), cs);
         		}
         	});
             ImageView delete = (ImageView)view.findViewById(R.id.account_delete);
             delete.setOnClickListener(new OnClickListener() {
                 
                 public void onClick(View v) {
-    				db.execSQL("DELETE FROM "+service+" WHERE _id='"+cs+"';");
+                	if(service=="twitter")
+                		accountdb.delete_twitter(cs);
+                	if(service=="facebook")
+                		accountdb.delete_facebook(cs);
     				cursor.requery();
                 }
             });
@@ -108,11 +112,11 @@ public class Account extends Activity implements OnClickListener{
 		case R.id.account_add_twitter:
 			final Intent twitter=new Intent(this,Twitter_Add.class);
 			startActivity(twitter);
-			accountdb.insert_twitter(db,"abcd","efgh","higk");
+			accountdb.insert_twitter("abcd","efgh","higk");
 			cursor_twitter.requery();
 			break;
 		case R.id.account_add_facebook:
-			accountdb.insert_facebook(db,"dcba","efgh","higk");
+			accountdb.insert_facebook("dcba","efgh","higk");
 			cursor_facebook.requery();
 			break;
 		}

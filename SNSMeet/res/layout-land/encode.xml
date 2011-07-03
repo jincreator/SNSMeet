@@ -51,7 +51,7 @@
                 android:paddingBottom="8dip"/>
 
     </ScrollView>
-    <Button android:text="Button" android:id="@+id/button_next" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
+    <Button android:text="@string/next" android:id="@+id/button_next" android:layout_height="wrap_content" android:layout_width="wrap_content"></Button>
   </LinearLayout>
 
 </LinearLayout>
