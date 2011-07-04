@@ -20,8 +20,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
+import android.database.MergeCursor;
+import android.graphics.drawable.Drawable;
 import android.widget.CursorAdapter;
-import android.widget.TabHost;
 import android.widget.Toast;
 import android.content.Context;
 import org.snsmeet.main.AccountDB;
@@ -39,36 +40,20 @@ public class Account extends Activity implements OnClickListener{
         startManagingCursor(cursor_twitter);
         cursor_facebook=accountdb.cursor_facebook();
         startManagingCursor(cursor_facebook);
+        Cursor[] mcursor=new Cursor[] {cursor_twitter,cursor_facebook};
+        Cursor account_cursor=new MergeCursor(mcursor);
+        startManagingCursor(account_cursor);
         setContentView(R.layout.account);
-        TabHost tabhost=(TabHost)findViewById(R.id.tabhost);
-        tabhost.setup();
-        TabHost.TabSpec spec;
-        spec=tabhost.newTabSpec("twitter_tab");
-        spec.setIndicator(getString(R.string.twitter),getResources().getDrawable(R.drawable.twitter_newbird_blue_tab));
-        spec.setContent(R.id.twitter_frame);
-        tabhost.addTab(spec);
-        spec=tabhost.newTabSpec("facebook_tab");
-        spec.setIndicator(getString(R.string.facebook),getResources().getDrawable(R.drawable.f_logo_tab));
-        spec.setContent(R.id.facebook_frame);
-        tabhost.addTab(spec);
-        ListView twitter_list=(ListView)findViewById(R.id.twitter_listview);
-        AccountAdapter twitterAdapter=new AccountAdapter(this,cursor_twitter,"twitter");
-        twitter_list.setAdapter(twitterAdapter);
-        AccountAdapter facebookAdapter=new AccountAdapter(this,cursor_facebook,"facebook");
-        ListView facebook_list=(ListView)findViewById(R.id.facebook_listview);
-        facebook_list.setAdapter(facebookAdapter);
-        tabhost.setCurrentTab(0);
-        View account_add_twitter=findViewById(R.id.account_add_twitter);
-        account_add_twitter.setOnClickListener(this);
-        View account_add_facebook=findViewById(R.id.account_add_facebook);
-        account_add_facebook.setOnClickListener(this);
+        ListView account_list=(ListView)findViewById(R.id.account_listview);
+        AccountAdapter account_adapter=new AccountAdapter(this,account_cursor);
+        account_list.setAdapter(account_adapter);
+        View account_add=findViewById(R.id.account_add);
+        account_add.setOnClickListener(this);
     }
 	class AccountAdapter extends CursorAdapter{
-		private String service;
 		private Cursor cursor;
-		public AccountAdapter(Context context, Cursor cur, String service_input) {
+		public AccountAdapter(Context context, Cursor cur) {
             super(context,cur);
-            service=service_input;
             cursor=cur;
         }
 
@@ -81,15 +66,24 @@ public class Account extends Activity implements OnClickListener{
         @Override
         public void bindView(View view, Context context, Cursor cur) {
         	final int cs=cur.getInt(cur.getColumnIndex("_id"));
+        	final String csv=cur.getString(cur.getColumnIndex("service"));
         	TextView nick = (TextView)view.findViewById(R.id.account_nick);
         	final ToggleButton use = (ToggleButton)view.findViewById(R.id.account_toggle);
+        	Drawable twitter_icon = getResources().getDrawable(R.drawable.ic_twitter_newbird_blue);
+        	twitter_icon.setBounds(0, 0, twitter_icon.getIntrinsicWidth(), twitter_icon.getIntrinsicHeight());
+        	Drawable facebook_icon = getResources().getDrawable(R.drawable.ic_f_logo);
+        	facebook_icon.setBounds(0, 0, facebook_icon.getIntrinsicWidth(), facebook_icon.getIntrinsicHeight());
+        	if(csv.equals("twitter"))
+        		use.setCompoundDrawables(null,twitter_icon,null,null);
+        	if(csv.equals("facebook"))
+        		use.setCompoundDrawables(null,facebook_icon,null,null);
         	nick.setText(cur.getString(cur.getColumnIndex("nick")));
         	use.setChecked(cur.getLong(cur.getColumnIndex("use"))==1);
         	use.setOnClickListener(new OnClickListener(){
         		public void onClick(View v){
-        			if(service=="twitter")
+        			if(csv.equals("twitter"))
         				accountdb.use_twitter(use.isChecked(), cs);
-        			if(service=="facebook")
+        			if(csv.equals("facebook"))
         				accountdb.use_facebook(use.isChecked(), cs);
         		}
         	});
@@ -97,9 +91,9 @@ public class Account extends Activity implements OnClickListener{
             delete.setOnClickListener(new OnClickListener() {
                 
                 public void onClick(View v) {
-                	if(service=="twitter")
+                	if(csv.equals("twitter"))
                 		accountdb.delete_twitter(cs);
-                	if(service=="facebook")
+                	if(csv.equals("facebook"))
                 		accountdb.delete_facebook(cs);
     				cursor.requery();
                 }
@@ -109,15 +103,27 @@ public class Account extends Activity implements OnClickListener{
 		
 	public void onClick(View v){
 		switch(v.getId()){
-		case R.id.account_add_twitter:
+		case R.id.account_add:
 			final Intent twitter=new Intent(this,Twitter_Add.class);
-			startActivity(twitter);
-			accountdb.insert_twitter("abcd","efgh","higk");
-			cursor_twitter.requery();
-			break;
-		case R.id.account_add_facebook:
-			accountdb.insert_facebook("dcba","efgh","higk");
-			cursor_facebook.requery();
+            final Intent facebook;
+			AlertDialog.Builder b=new AlertDialog.Builder(this);
+			b.setTitle(R.string.account_add);
+			b.setItems(R.array.sns_type,new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int sns_type){
+					switch(sns_type){
+					case 0:
+						//startActivity(twitter);
+						accountdb.insert_twitter("abcd","efgh","higk");
+						cursor_twitter.requery();
+						break;
+					case 1:
+						accountdb.insert_facebook("dcba","efgh","higk");
+						cursor_facebook.requery();
+						break;
+					}
+				}
+			});
+			b.show();
 			break;
 		}
 	}
