@@ -112,8 +112,7 @@ public class Account extends Activity implements OnClickListener{
 				public void onClick(DialogInterface dialog, int sns_type){
 					switch(sns_type){
 					case 0:
-						//startActivity(twitter);
-						accountdb.insert_twitter("abcd","efgh","higk");
+						startActivity(twitter);
 						cursor_twitter.requery();
 						break;
 					case 1:
