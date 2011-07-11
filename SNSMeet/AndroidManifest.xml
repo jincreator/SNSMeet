@@ -10,14 +10,14 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".main.SNSMeet"
+        <activity android:name=".SNSMeet"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.About"
+        <activity android:name=".About"
                   android:label="@string/about"
                   android:theme="@android:style/Theme.Dialog">
                   <intent-filter>
@@ -25,10 +25,10 @@
                       <category android:name="android.intent.category.DEFAULT" />
                   </intent-filter>
         </activity>
-        <activity android:name=".main.Account"
+        <activity android:name=".Account"
                   android:label="@string/account">
         </activity>
-        <activity android:name=".main.Twitter_Add"
+        <activity android:name=".Twitter_Add"
                   android:label="@string/account_add"
                   android:launchMode="singleInstance"
                   android:configChanges="keyboardHidden|orientation">
@@ -43,19 +43,19 @@
                       <data android:scheme="snsmeet" android:host="twitter" />                
                   </intent-filter>
         </activity>
-        <activity android:name=".main.Setting"
+        <activity android:name=".Setting"
                   android:label="@string/setting">
         </activity>
-        <activity android:name=".main.List"
+        <activity android:name=".List"
                   android:label="@string/list">
         </activity>
-        <activity android:name=".main.NFC"
+        <activity android:name=".NFC"
                   android:label="@string/nfc">
         </activity>
-        <activity android:name=".main.QRcode"
+        <activity android:name=".QRcode"
                   android:label="@string/qrcode">
         </activity>
-        <activity android:name=".main.License"
+        <activity android:name=".License"
                   android:label="@string/license"
                   android:theme="@android:style/Theme.Dialog">
                   <intent-filter>
@@ -63,7 +63,7 @@
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".main.LegalNotice"
+        <activity android:name=".LegalNotice"
                   android:label="@string/legal_notice"
                   android:theme="@android:style/Theme.Dialog">
                   <intent-filter>
@@ -71,13 +71,13 @@
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.CaptureActivity"
+        <activity android:name=".zxing.client.android.CaptureActivity"
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|keyboardHidden"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:windowSoftInputMode="stateAlwaysHidden">
                   <intent-filter>
-                      <action android:name="org.snsmeet.client.android.SCAN"/>
+                      <action android:name="org.snsmeet.zxing.client.android.SCAN"/>
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
                   <!-- Allow web apps to launch Barcode Scanner by linking to http://zxing.appspot.com/scan. -->
@@ -102,12 +102,12 @@
                       <data android:scheme="http" android:host="www.google.co.uk" android:path="/m/products/scan"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.PreferencesActivity"
+        <activity android:name=".zxing.client.android.PreferencesActivity"
                   android:label="@string/preferences_name">
         </activity>
-        <activity android:name=".client.android.encode.EncodeActivity" android:label="@string/share_name">
+        <activity android:name=".zxing.client.android.encode.EncodeActivity" android:label="@string/share_name">
                   <intent-filter>
-                      <action android:name="org.snsmeet.client.android.ENCODE"/>
+                      <action android:name="org.snsmeet.zxing.client.android.ENCODE"/>
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
                   <!-- This allows us to handle the Share button in Contacts. -->
@@ -123,7 +123,7 @@
                       <data android:mimeType="text/plain"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.book.SearchBookContentsActivity"
+        <activity android:name=".zxing.client.android.book.SearchBookContentsActivity"
                   android:label="@string/sbc_name"
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|keyboardHidden">
@@ -132,12 +132,12 @@
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.wifi.WifiActivity"
+        <activity android:name=".zxing.client.android.wifi.WifiActivity"
                   android:label="@string/wa_name"
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name=".client.android.share.ShareActivity"
+        <activity android:name=".zxing.client.android.share.ShareActivity"
                   android:label="@string/share_name"
                   android:screenOrientation="user"
                   android:theme="@android:style/Theme.Light">
@@ -146,14 +146,14 @@
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.share.BookmarkPickerActivity"
+        <activity android:name=".zxing.client.android.share.BookmarkPickerActivity"
                   android:label="@string/bookmark_picker_name">
                   <intent-filter>
                       <action android:name="android.intent.action.PICK"/>
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.share.AppPickerActivity"
+        <activity android:name=".zxing.client.android.share.AppPickerActivity"
                   android:label="@string/app_picker_name"
                   android:configChanges="orientation">
                   <intent-filter>
@@ -161,7 +161,7 @@
                       <category android:name="android.intent.category.DEFAULT"/>
                   </intent-filter>
         </activity>
-        <activity android:name=".client.android.HelpActivity"
+        <activity android:name=".zxing.client.android.HelpActivity"
                   android:screenOrientation="user">
                   <intent-filter>
                       <action android:name="android.intent.action.VIEW"/>
