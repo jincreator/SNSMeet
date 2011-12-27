@@ -41,7 +41,7 @@ public class QRcode extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                String format = intent.getStringExtra("SCAN_RESULT_FORMAT"); //형식
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
                 String contents = intent.getStringExtra("SCAN_RESULT");
             }
             else if(resultCode == RESULT_CANCELED)
