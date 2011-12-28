@@ -58,6 +58,8 @@ public class QRcode extends Activity {
 	void show(){
 		Cursor account=accountdb.cursor_using_twitter();
 		account.moveToFirst();
+		if(account.getCount()==0)
+			return;
 	    Intent i = new Intent(Intents.Encode.ACTION);
 	    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
 	    i.putExtra(Intents.Encode.TYPE, Contents.Type.TEXT);
